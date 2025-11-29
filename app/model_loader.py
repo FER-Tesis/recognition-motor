@@ -53,7 +53,7 @@ def decision_rule(probs):
 
     disgust_prob = probs[5].item()
 
-    DISGUST_THRESHOLD = 0.18
+    DISGUST_THRESHOLD = 0.17
 
     if neutral >= 0.75:
         return 0
