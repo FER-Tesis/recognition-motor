@@ -49,12 +49,12 @@ def process_shard(shard_id: str, model, kinesis_client):
             seq_num = record["SequenceNumber"]
 
             try:
-                frame_bgr, camera_id, timestamp = decode_record_data(record["Data"])
+                frame_bgr, camera_id, capture_session_id, timestamp = decode_record_data(record["Data"])
                 emotion = infer_emotion(model, frame_bgr)
 
                 print(f"🧠 Emoción detectada para cámara {camera_id}: {emotion}")
                 
-                send_emotion_event(camera_id, emotion, timestamp)
+                send_emotion_event(camera_id, capture_session_id, emotion, timestamp)
 
                 save_sequence_number(shard_id, seq_num)
 

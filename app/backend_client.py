@@ -1,11 +1,12 @@
 import httpx
 from config import BACKEND_BASE_URL, EMOTION_EVENT_ENDPOINT
 
-def send_emotion_event(camera_id: str, emotion: str, timestamp: str):
+def send_emotion_event(camera_id: str, capture_session_id: str, emotion: str, timestamp: str):
     url = BACKEND_BASE_URL + EMOTION_EVENT_ENDPOINT
 
     payload = {
         "camera_id": camera_id,
+        "capture_session_id": capture_session_id,
         "emotion": emotion,
         "timestamp": timestamp,
     }

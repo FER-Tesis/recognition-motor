@@ -8,6 +8,7 @@ def decode_record_data(record_data: bytes):
     payload = json.loads(json_str)
 
     camera_id = payload["camera_id"]
+    capture_session_id = payload["capture_session_id"]
     timestamp = payload["timestamp"]
     frame_b64 = payload["frame"]
 
@@ -18,4 +19,4 @@ def decode_record_data(record_data: bytes):
     if frame_bgr is None:
         raise ValueError("No se pudo decodificar el frame JPEG")
 
-    return frame_bgr, camera_id, timestamp
+    return frame_bgr, camera_id, capture_session_id, timestamp
